@@ -386,13 +386,13 @@ describe("STATIC_PRICE_RANGES", () => {
 	});
 
 	it("has correct format", () => {
-		expect(STATIC_PRICE_RANGES[0]).toEqual({ label: "Under $50", value: "0-50" });
-		expect(STATIC_PRICE_RANGES[3]).toEqual({ label: "$200+", value: "200-" });
+		expect(STATIC_PRICE_RANGES[0]).toEqual({ label: "Moins de 30 000 FCFA", value: "0-50" });
+		expect(STATIC_PRICE_RANGES[3]).toEqual({ label: "120 000 FCFA et plus", value: "200-" });
 	});
 
 	it("STATIC_PRICE_RANGES_WITH_COUNT adds count: 0", () => {
 		expect(STATIC_PRICE_RANGES_WITH_COUNT[0]).toEqual({
-			label: "Under $50",
+			label: "Moins de 30 000 FCFA",
 			value: "0-50",
 			count: 0,
 		});

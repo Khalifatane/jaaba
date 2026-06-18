@@ -42,10 +42,10 @@ export interface CategoryOption {
 // ============================================================================
 
 export const STATIC_PRICE_RANGES = [
-	{ label: "Under $50", value: "0-50" },
-	{ label: "$50 - $100", value: "50-100" },
-	{ label: "$100 - $200", value: "100-200" },
-	{ label: "$200+", value: "200-" },
+	{ label: "Moins de 30 000 FCFA", value: "0-50" },
+	{ label: "De 30 000 à 60 000 FCFA", value: "50-100" },
+	{ label: "De 60 000 à 120 000 FCFA", value: "100-200" },
+	{ label: "120 000 FCFA et plus", value: "200-" },
 ] as const;
 
 /** Price ranges with count=0 for FilterBar compatibility */
