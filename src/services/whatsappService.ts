@@ -14,7 +14,7 @@ type WhatsAppCustomer = {
 	paymentReference?: string;
 };
 
-const FALLBACK_BUSINESS_NUMBER = "221XXXXXXXXX";
+const FALLBACK_BUSINESS_NUMBER = "221778756316";
 
 export const handleWhatsAppRedirect = (customer: WhatsAppCustomer, cart: CartItem[]) => {
 	const businessNumber = process.env.NEXT_PUBLIC_WHATSAPP_BUSINESS_NUMBER || FALLBACK_BUSINESS_NUMBER;
