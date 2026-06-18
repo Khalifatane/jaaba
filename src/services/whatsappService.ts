@@ -16,11 +16,31 @@ type WhatsAppCustomer = {
 
 const FALLBACK_BUSINESS_NUMBER = "221778756316";
 
+const getCartItemName = (item: CartItem) => {
+	const runtimeItem = item as CartItem & {
+		product?: { name?: string };
+		title?: string;
+	};
+
+	return (
+		runtimeItem.product?.name?.trim() ||
+		item.name?.trim() ||
+		runtimeItem.title?.trim() ||
+		item.slug?.toString().trim() ||
+		"Produit inconnu"
+	);
+};
+
 export const handleWhatsAppRedirect = (customer: WhatsAppCustomer, cart: CartItem[]) => {
 	const businessNumber = process.env.NEXT_PUBLIC_WHATSAPP_BUSINESS_NUMBER || FALLBACK_BUSINESS_NUMBER;
 	const currency = cart.find((item) => item.currency)?.currency ?? "CFA";
+	if (cart.some((item) => !item.name?.trim())) {
+		console.warn("handleWhatsAppRedirect: cart item missing name", JSON.stringify(cart, null, 2));
+	}
 	const itemsList = cart
-		.map((item) => `• ${item.name} (x${item.quantity}) - ${item.price} ${currency}`)
+		.map(
+			(item) => `• ${getCartItemName(item)} (x${item.quantity}) - ${item.price} ${currency}`,
+		)
 		.join("\n");
 	const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
